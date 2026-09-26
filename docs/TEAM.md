@@ -1,58 +1,41 @@
 # Danh Sách Thành Viên & Báo Cáo Phân Công Nhóm
 
-- **Tên Nhóm:** `[Điền tên nhóm]`
+- **Tên Nhóm:** `l1lp3pp3r`
 - **Mã Nhóm / Lớp:** `K4-L3-DAY10`
-- **Tên Repository Nộp Bài:** `K4-L3-DAY10-TenNhom-DataPipeline`
+- **Tên Repository Nộp Bài:** `K4-L3B-Day10-l1lp3pp3r-DataPipelineDataObservability` (https://github.com/tiu42/K4-L3B-Day10-l1lp3pp3r-DataPipelineDataObservability)
 
 ---
 
 ## # Thành viên
 
+Nhóm có **1 thành viên**, đảm nhận toàn bộ 4 vai trò.
+
 | STT | Họ và tên | MSSV | Email | Vai trò & Phân công công việc | Báo cáo cá nhân |
 |---:|---|---|---|---|---|
-| 1 | | | | Trưởng nhóm / Pipeline Integrator (`core/`, `phase1.py`, `corruption_flow.py`) | `report/<MSSV1>_HoTen.md` |
-| 2 | | | | Data Foundation & Recovery (`crossref.py`, `cleaning.py`, raw data) | `report/<MSSV2>_HoTen.md` |
-| 3 | | | | RAG & Vector Index (`retrieval/index.py`, `embeddings.py`, ChromaDB) | `report/<MSSV3>_HoTen.md` |
-| 4 | | | | Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, reporting) | `report/<MSSV4>_HoTen.md` |
+| 1 | Lê Minh Hiếu | 2A202602828 | hieu04022004@gmail.com | Trưởng nhóm / Pipeline Integrator (`phase1.py`, `corruption_flow.py`); Data Foundation & Recovery (`crossref.py`, `cleaning.py`, `corruption.py`, raw data); RAG & Vector Index (ChromaDB 3 collection); Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, `reporting.py`) | `report/2A202602828_LeMinhHieu.md` |
 
-*(Nếu nhóm có 3 hoặc 5-6 thành viên, xem bảng phân công chi tiết theo vai trò trong file `CHECKPOINTS.md`)*.
+---
+
+## # Tỷ lệ đóng góp (% Contribution)
+
+| Thành viên | MSSV | Phạm vi | % Contribution | Xác nhận |
+|---|---|---|---:|---|
+| Lê Minh Hiếu | 2A202602828 | Toàn bộ pipeline (ingestion, cleaning, quality gate, testset, evaluation, corruption, repair, reporting) | 100% | Đã xác nhận (nhóm 1 người) |
 
 ---
 
 ## # Cá nhân
 
-### ## HoVaTen1-MSSV1
-- **Vai trò:** Trưởng nhóm & Điều phối Pipeline.
+### ## LeMinhHieu-2A202602828
+- **Vai trò:** Thành viên duy nhất, đảm nhận cả 4 vai trò: điều phối pipeline, ingestion & phục hồi dữ liệu, RAG & vector index, observability & evaluation.
 - **Công việc chi tiết đã hoàn thành:**
-  - Thiết lập cấu hình hệ thống `core/config.py` và đường dẫn artifacts `core/utils.py`.
-  - Kết nối luồng thực thi trong `src/pipelines/phase1.py` và `src/pipelines/corruption_flow.py`.
-  - Kiểm tra tính nhất quán của các artifacts và theo dõi Contributor tracking trên GitHub nhánh `main`.
+  - `src/ingestion/crossref.py`: parse payload Crossref, fetch API có retry cho 429/5xx và fallback đọc snapshot local, `load_raw_records`.
+  - `src/ingestion/cleaning.py`: làm sạch text (JATS tag, whitespace), tính `age_days`, sinh `text_for_embedding` 5 phần, khử trùng lặp theo `paper_id`.
+  - `src/observability/quality.py`: Quality Gate với Great Expectations 1.x (Ephemeral Context, 4 expectation bắt buộc) và Freshness SLA (`age_days > 180` vượt 25% ⇒ `is_fresh = False`).
+  - `src/evaluation/testset.py`: bộ 10 câu hỏi ground truth trải đều 4 dạng `summary`/`authors`/`date`/`categories`.
+  - `src/ingestion/corruption.py`: 6 kịch bản làm bẩn dữ liệu có seed cố định và nhật ký `corruption_log.json`.
+  - `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `src/observability/reporting.py`: xâu chuỗi pipeline baseline, luồng corrupt → repair idempotent từ raw snapshot → đối chiếu 3 trạng thái, xuất báo cáo markdown.
+  - Quản lý 3 collection ChromaDB tách biệt (`papers-baseline`, `papers-corrupted`, `papers-repaired`).
 - **Điều học được / Đóng góp chính:**
-  - Hiểu sâu sắc về thiết kế Idempotent Pipeline và quản lý trạng thái luồng dữ liệu đa tầng.
-
-### ## HoVaTen2-MSSV2
-- **Vai trò:** Phụ trách Ingestion, Làm sạch & Phục hồi dữ liệu.
-- **Công việc chi tiết đã hoàn thành:**
-  - Xây dựng module thu thập Crossref API với cơ chế Fallback offline trong `src/ingestion/crossref.py`.
-  - Chuẩn hóa schema, tính toán trường `age_days` và `text_for_embedding` trong `src/ingestion/cleaning.py`.
-  - Thực thi cơ chế Idempotent Repair phục hồi dữ liệu từ raw snapshot.
-- **Điều học được / Đóng góp chính:**
-  - Kỹ thuật truy vết nguồn gốc dữ liệu (Data Lineage) và bảo toàn raw snapshot trước khi biến đổi.
-
-### ## HoVaTen3-MSSV3
-- **Vai trò:** Phụ trách RAG, Vector Database & Embedding.
-- **Công việc chi tiết đã hoàn thành:**
-  - Quản lý mô hình embedding `sentence-transformers/all-MiniLM-L6-v2`.
-  - Nạp và quản lý 3 collection riêng biệt trong ChromaDB (`papers-baseline`, `papers-corrupted`, `papers-repaired`).
-  - Xây dựng QA Agent truy vấn ngữ cảnh chính xác theo tài liệu.
-- **Điều học được / Đóng góp chính:**
-  - Cách cô lập các không gian vector để so sánh khách quan giữa dữ liệu sạch và dữ liệu bị lỗi.
-
-### ## HoVaTen4-MSSV4
-- **Vai trò:** Phụ trách Data Observability & Benchmark Evaluation.
-- **Công việc chi tiết đã hoàn thành:**
-  - Thiết lập Quality Gate theo chuẩn mới **Great Expectations 1.x** và giám sát Freshness SLA trong `src/observability/quality.py`.
-  - Xây dựng bộ câu hỏi đánh giá chuẩn trong `src/evaluation/testset.py`.
-  - Đo lường và xuất bảng đối chiếu 3 trạng thái vào `data/reports/corruption_report.md`.
-- **Điều học được / Đóng góp chính:**
-  - Cách thiết lập hệ thống cảnh báo sớm chặn đứng hiện tượng Silent Failure trước khi dữ liệu vào serving layer.
+  - Dữ liệu hỏng không gây lỗi runtime (Silent Failure); chỉ quality gate và metric đánh giá mới làm lộ ra vấn đề, nên cần đặt quality gate trước khi dữ liệu vào vector DB.
+  - Repair an toàn phải dựa trên raw snapshot bất biến để có thể chạy lại nhiều lần cho cùng kết quả.

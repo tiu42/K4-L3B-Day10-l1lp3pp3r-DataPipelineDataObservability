@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-09-26T15:09:22.834137+00:00",
+  "seed": 42,
+  "input_rows": 24,
+  "output_rows": 22,
+  "counts": {
+    "drop_latest_records": 5,
+    "blank_summary": 3,
+    "inject_noise": 3,
+    "truncate_title": 3,
+    "stale_date": 3,
+    "duplicate_rows": 3
+  },
+  "events": [
+    {
+      "corruption": "drop_latest_records",
+      "paper_id": "10.1145/3637528.3671812",
+      "field": null,
+      "before": "2026-07-22",
+      "after": null
+    },
+    {
+      "corruption": "drop_latest_records",
+      "paper_id": "10.1145/3637528.3671808",
+      "field": null,
+      "before": "2026-07-19",
+      "after": null
+    },
+    {
+      "corruption": "drop_latest_records",
+      "paper_id": "10.1145/3637528.3671804",
+      "field": null,
+      "before": "2026-07-05",
+      "after": null
+    },
+    {
+      "corruption": "drop_latest_records",
+      "paper_id": "10.1145/3637528.3671807",
+      "field": null,
+      "before": "2026-06-25",
+      "after": null
+    },
+    {
+      "corruption": "drop_latest_records",
+      "paper_id": "10.1145/3637528.3671802",
+      "field": null,
+      "before": "2026-06-12",
+      "after": null
+    },
+    {
+      "corruption": "blank_summary",
+      "paper_id": "10.1145/3637528.3671811",
+      "field": "summary",
+      "before": "Dense vector search excels at conceptual similarity but struggles with exact acronyms and serial numbers. Reciprocal Rank Fusion of sparse lexical scores and dense embeddings achieves optimal recall.",
+      "after": ""
+    },
+    {
+      "corruption": "blank_summary",
+      "paper_id": "10.1145/3637528.3671801",
+      "field": "summary",
+      "before": "Retrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices.",
+      "after": ""
+    },
+    {
+      "corruption": "blank_summary",
+      "paper_id": "10.1145/3637528.3671810",
+      "field": "summary",
+      "before": "Embedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model.",
+      "after": ""
+    },
+    {
+      "corruption": "inject_noise",
+      "paper_id": "10.1145/3637528.3671816",
+      "field": "summary",
+      "before": "An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters.",
+      "after": "@@@ An extended empirical study on e define freshness service-level NaN agreements (SLAs) for temporal document &&& ingestion. By tracking document age and update cadence, our orchestrator 0xDEADBEEF dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling &&& parameters. 0xDEADBEEF XJQZ"
+    },
+    {
+      "corruption": "inject_noise",
+      "paper_id": "10.1145/3637528.3671820",
+      "field": "summary",
+      "before": "An extended empirical study on single LLM is susceptible to confirmation bias when evaluating retrieved evidence. We demonstrate a multi-agent debate architecture where specialized verifier agents critique and corroborate citations Further analysis on scaling parameters.",
+      "after": "An extended empirical study on &&& 0xDEADBEEF single LLM is susceptible to confirmation bias when @@@ @@@ evaluating retrieved evidence. We XJQZ demonstrate lorem~ipsum a #@!% multi-agent debate architecture where specialized verifier agents critique and corroborate citations Further analysis on scaling parameters."
+    },
+    {
+      "corruption": "inject_noise",
+      "paper_id": "10.1145/3637528.3671806",
+      "field": "summary",
+      "before": "Connecting LLMs directly to raw warehouse tables often results in schema misunderstandings. A governed semantic layer standardizes business metric definitions, dramatically boosting SQL generation accuracy.",
+      "after": "Connecting NaN lorem~ipsum LLMs &&& directly to raw warehouse @@@ tables often results in schema misunderstandings. A lorem~ipsum governed semantic layer standardizes business metric definitions, dramatically boosting SQL generation accuracy."
+    },
+    {
+      "corruption": "truncate_title",
+      "paper_id": "10.1145/3637528.3671803",
+      "field": "title",
+      "before": "Mitigating Ghost Vectors in Dense Retrieval via Idempotent Indexing",
+      "after": "Mitigat"
+    },
+    {
+      "corruption": "truncate_title",
+      "paper_id": "10.1145/3637528.3671819",
+      "field": "title",
+      "before": "Advanced Perspectives on Synthetic Corruption Testing: Stress-Testing Vector Search Robustness",
+      "after": "Advance"
+    },
+    {
+      "corruption": "truncate_title",
+      "paper_id": "10.1145/3637528.3671813",
+      "field": "title",
+      "before": "Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks",
+      "after": "Advance"
+    },
+    {
+      "corruption": "stale_date",
+      "paper_id": "10.1145/3637528.3671809",
+      "field": "published",
+      "before": "2026-04-30",
+      "after": "2025-04-30"
+    },
+    {
+      "corruption": "stale_date",
+      "paper_id": "10.1145/3637528.3671815",
+      "field": "published",
+      "before": "2026-06-03",
+      "after": "2025-06-03"
+    },
+    {
+      "corruption": "stale_date",
+      "paper_id": "10.1145/3637528.3671823",
+      "field": "published",
+      "before": "2026-06-11",
+      "after": "2025-06-11"
+    },
+    {
+      "corruption": "duplicate_rows",
+      "paper_id": "10.1145/3637528.3671814",
+      "field": null,
+      "before": null,
+      "after": "duplicated"
+    },
+    {
+      "corruption": "duplicate_rows",
+      "paper_id": "10.1145/3637528.3671822",
+      "field": null,
+      "before": null,
+      "after": "duplicated"
+    },
+    {
+      "corruption": "duplicate_rows",
+      "paper_id": "10.1145/3637528.3671805",
+      "field": null,
+      "before": null,
+      "after": "duplicated"
+    }
+  ]
+}
